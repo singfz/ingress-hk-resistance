@@ -1,0 +1,9 @@
+.player_nickname:before  {
+	width: 20px;
+	height: 20px;
+	margin-right: 4px;
+	background: url('chrome-extension://__MSG_@@extension_id__/panda.gif');
+	background-size: 20px 20px;
+	display: inline-block;
+	content: "  "
+}

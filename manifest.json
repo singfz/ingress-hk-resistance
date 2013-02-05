@@ -1,0 +1,40 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "content_scripts": [ {
+      "js": [ "bookmarklet.js" ],
+      "css": [ "css.css" ],
+      "matches": [ "http://www.ingress.com/intel*" ]
+   } ],
+   "description": "(beta) ",
+   "homepage_url": "http://www.ingress.com/intel/",
+   "icons": {
+      "128": "icon-128.png",
+      "16": "icon-16.png",
+      "48": "icon-48.png"
+   },
+   "web_accessible_resources": [
+	"enl_lev1.png",
+	"enl_lev2.png",
+	"enl_lev3.png",
+	"enl_lev4.png",
+	"enl_lev5.png",
+	"enl_lev6.png",
+	"enl_lev7.png",
+	"enl_lev8.png",
+	"hum_lev1.png",
+	"hum_lev2.png",
+	"hum_lev3.png",
+	"hum_lev4.png",
+	"hum_lev5.png",
+	"hum_lev6.png",
+	"hum_lev7.png",
+	"hum_lev8.png",
+	"panda.gif"
+   ],
+   "manifest_version": 2,
+   "name": "Ingress: HK Resistance",
+   "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+   "version": "0.9.1"
+}
