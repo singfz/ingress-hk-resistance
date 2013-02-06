@@ -39,21 +39,26 @@ function ZZ() {
 	  google.maps.event.addListener(a.I, "click", t(b.show, b, a.h));
 
 	  // SDiZ::BEGIN -- double click
-	  google.maps.event.clearListeners(a.I, "dblclick");
+	  google.maps.event.clearListeners(a.I, "rightclick");
 	  b = new U(a.d);
-	  google.maps.event.addListener(a.I, "dblclick", t(b.dblclick, b, a));
+	  google.maps.event.addListener(a.I, "rightclick", t(b.rightclick, b, a));
 	  // SDiZ::END
 	};
 
 	// Double click two portals to create a link
 	var b = [];
-	U.prototype.dblclick = function(a) {
+	U.prototype.rightclick = function(a) {
 		var map = a.I.map;
 		b.push( new google.maps.LatLng(this.d.Hb, this.d.Ib) );
 		if (b.length == 2) {
 			new google.maps.Polyline({map:map, path:b, strokeColor:"#cc0000", strokeOpacity:0.8, strokeWeight:2});
+			var distance = Math.round( google.maps.geometry.spherical.computeDistanceBetween(b[0], b[1]) );
+			distance /= 1000;
+			alert("Distance = " + distance + "km");
 			b = [];
 		};
+		
+		false;
 	};
 
 	// Datail page, detail
