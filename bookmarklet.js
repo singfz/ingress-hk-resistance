@@ -3,54 +3,48 @@ var root = chrome.extension.getURL("/");
 // T.c()
 //    .na --> portal
 //    .kb --> region
-//    .aa --> edge
+//    .ba --> edge
 
 function ZZ() {
-    var CF = {};
-
+	// Get image for portal level
 	Md = function (a, b, c) {
 	  var d = a.pa;
 	  W[d] || (W[d] = {});
 	  W[d][b] || (W[d][b] = {});
-	  // SDIZ::START
+	  // SDIZ::START -- use the icon in extension
 	  W[d][b][c] || (W[d][b][c] = Nd("__root__" + a.pa + "_lev" + b + ".png",c));
 	  // SDIZ::END
 	  return W[d][b][c]
 	};
+	
+    // Setup portal marker on map
 	Jd = function (a) {
-	  a.G ? (a.G.setIcon(Kd(a.d.b, Za(a.d.v), a.z)), a.G.setShape(Ld(a.z))) : a.G = new google.maps.Marker({position:$c(a.d), icon:Kd(a.d.b, Za(a.d.v), a.z), shape:Ld(a.z), zIndex:1});
-	  // SDIZ::START
+	  a.I ? (a.I.setIcon(Kd(a.d.b, Za(a.d.w), a.B)), a.I.setShape(Ld(a.B))) : a.I = new google.maps.Marker({position:$c(a.d), icon:Kd(a.d.b, Za(a.d.w), a.B), shape:Ld(a.B), zIndex:1});
+	  // SDiZ::BEGIN - show all levels
 	  var b = true || a.d.e > 1;
-	  // SDIZ::END
+	  // SDiZ::END
 	  if(a.t && b) {
-		a.t.setIcon(Md(a.d.b, a.d.e, a.z))
+		a.t.setIcon(Md(a.d.b, a.d.e, a.B))
 	  }else {
 		if(a.t && !b) {
-		  a.t.setMap(l), a.t = l
+		  a.t.setMap(m), a.t = m
 		}else {
 		  if(!a.t && b) {
-			a.t = new google.maps.Marker({position:$c(a.d), icon:Md(a.d.b, a.d.e, a.z), clickable:m, zIndex:2})
+			a.t = new google.maps.Marker({position:$c(a.d), icon:Md(a.d.b, a.d.e, a.B), clickable:n, zIndex:2})
 		  }
 		}
 	  }
-	  google.maps.event.clearListeners(a.G, "click");
+	  google.maps.event.clearListeners(a.I, "click");
 	  b = new U(a.d);
-	  google.maps.event.addListener(a.G, "click", t(b.show, b, a.h))
-	};	
+	  google.maps.event.addListener(a.I, "click", t(b.show, b, a.h))
+	}
 
-    // Detail page, top title	
-	xd = function(a, b) {
-	  var c = b || new J;
-	  Ad({g:a.j.Y}, c);
-	  c.append("   ", N(a.j.ta));
-	  return b ? "" : c.toString()
-	};
 	// Datail page, detail
 	wd = function (a, b) {
 	  // SDIZ::BEGIN
 	  // guid is a.j.a
 	  var links = 0;
-	  var allLinks = T.c().aa;
+	  var allLinks = T.c().ba;
 	  for (var id in allLinks) {
 		if (allLinks[id].m.a == a.j.a || allLinks[id].origin.a == a.j.a) {
 			links++;
@@ -59,9 +53,9 @@ function ZZ() {
 	  var fields = 0;
 	  var allFields = T.c().kb;
 	  for (var id in allFields) {
-		if (allFields[id].T[0].a == a.j.a ||
-			allFields[id].T[1].a == a.j.a ||
-			allFields[id].T[2].a == a.j.a
+		if (allFields[id].U[0].a == a.j.a ||
+			allFields[id].U[1].a == a.j.a ||
+			allFields[id].U[2].a == a.j.a
 		) {
 			fields++;
 		}
@@ -70,9 +64,9 @@ function ZZ() {
 	  var factionColor = a.j.e ? a.j.b.color : "";
 	  var totalEng,currEng, engP;
 	  totalEng = currEng = engP = 0;
-	  for (var r in a.j.v) {
-		totalEng += a.j.v[r].energyT;
-		currEng  += a.j.v[r].energy;
+	  for (var r in a.j.w) {
+		totalEng += a.j.w[r].energyT;
+		currEng  += a.j.w[r].energy;
 	  }
       engP = Math.round( currEng * 100.0 / totalEng );
 	  // SDIZ::END
@@ -83,8 +77,8 @@ function ZZ() {
 	  
 	  d.append(
 	  '<div class="portal_details_row"><div id="portal_image_container"><div id="portal_image"',
-		a.j.ga ? 
-			' style="background: url(' + rc(a.j.ga) + ') no-repeat center center"' : "",
+		a.j.u ? 
+			' style="background: url(' + rc(a.j.u) + ') no-repeat center center"' : "",
 		'></div></div><div id="portal_metadata">',
 		a.j.e ?
 			'<div id="portal_level">Level ' + N(a.j.e) + "</div>" : "",
@@ -111,7 +105,7 @@ function ZZ() {
 		);
 	  a.j.isCaptured && (d.append('<div id="portal_discovery_label">Discovery:</div><div id="portal_capture_details">'), xd(a, d), d.append("</div>"));
 	  d.append("</div></div></div>");
-	  a.j.isCaptured ? (c.append('<div id="portal_tabs_container" class="res_tab_selected"><div class="portal_details_row"><div id="portal_tab_group_decorator"><div id="pi-tab-res" class="portal_tab_title tab_selected">RESONATORS</div><div id="pi-tab-mod" class="portal_tab_title">MODS</div></div></div><div id="tab_content_res">'), yd({oa:a.j.v, b:a.j.b, s:k}, c), c.append('</div><div id="tab_content_mod">'), zd({Za:a.j.Q, b:a.j.b}, c), c.append("</div></div>")) : c.append('<div class="portal_details_row"></div>');	  
+	  a.j.isCaptured ? (c.append('<div id="portal_tabs_container" class="res_tab_selected"><div class="portal_details_row"><div id="portal_tab_group_decorator"><div id="pi-tab-res" class="portal_tab_title tab_selected">RESONATORS</div><div id="pi-tab-mod" class="portal_tab_title">MODS</div></div></div><div id="tab_content_res">'), yd({oa:a.j.w, b:a.j.b, s:k}, c), c.append('</div><div id="tab_content_mod">'), zd({Za:a.j.R, b:a.j.b}, c), c.append("</div></div>")) : c.append('<div class="portal_details_row"></div>');	  
 	  c.append("</div></div>");
 	  return b ? "" : c.toString()
 	};
