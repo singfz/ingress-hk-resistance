@@ -103,7 +103,7 @@ function ZZ() {
 		// SDIZ::END
 		'<div id="portal_capture_status">'
 		);
-	  a.j.isCaptured && (d.append('<div id="portal_discovery_label">Discovery:</div><div id="portal_capture_details">'), xd(a, d), d.append("</div>"));
+	  a.j.isCaptured && (d.append('<div id="portal_discovery_label">Cap:</div><div id="portal_capture_details">'), xd(a, d), d.append("</div>"));
 	  d.append("</div></div></div>");
 	  a.j.isCaptured ? (c.append('<div id="portal_tabs_container" class="res_tab_selected"><div class="portal_details_row"><div id="portal_tab_group_decorator"><div id="pi-tab-res" class="portal_tab_title tab_selected">RESONATORS</div><div id="pi-tab-mod" class="portal_tab_title">MODS</div></div></div><div id="tab_content_res">'), yd({oa:a.j.w, b:a.j.b, s:k}, c), c.append('</div><div id="tab_content_mod">'), zd({Za:a.j.R, b:a.j.b}, c), c.append("</div></div>")) : c.append('<div class="portal_details_row"></div>');	  
 	  c.append("</div></div>");
@@ -137,6 +137,17 @@ function ZZ() {
 		return new Uc(a.level, a.ownerGuid, a.energyTotal, a.distanceToPortal);
 		// SDIZ::END
 	  })
+	};
+	
+	// Show capture time
+	cd.prototype.formatOrig = cd.prototype.format;
+	cd.prototype.format = function(a, b) {
+	  if (this.Ca.length == 5) {
+		if (this.Ca[0].text == 'MM' && this.Ca[4].text == 'yyyy') {
+			return (new cd("MM/dd/yyyy HH:mm")).formatOrig(a, b);
+		}
+	  }
+	  return this.formatOrig(a, b);
 	};
 }
 
