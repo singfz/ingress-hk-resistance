@@ -1,13 +1,10 @@
 {
-   "background": {
-      "scripts": [ "background.js" ]
-   },
    "content_scripts": [ {
       "js": [ "bookmarklet.js" ],
       "css": [ "css.css" ],
       "matches": [ "http://www.ingress.com/intel*" ]
    } ],
-   "description": "(beta) ",
+   "description": "Ingress: Panda Resistance (HK Version) ",
    "homepage_url": "http://www.ingress.com/intel/",
    "icons": {
       "128": "icon-128.png",
@@ -34,7 +31,7 @@
 	"panda.gif"
    ],
    "manifest_version": 2,
-   "name": "Ingress: HK Resistance",
+   "name": "Ingress: Panda Resistance",
    "permissions": [ "tabs", "http://*/*", "https://*/*" ],
-   "version": "0.9.1"
+   "version": "3.0.0"
 }
