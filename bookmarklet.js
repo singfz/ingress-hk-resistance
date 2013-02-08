@@ -46,16 +46,29 @@ function ZZ() {
   };
 
   // Double click two portals to create a link
-  var b = [];
+	function showMsg(v) {
+    var msg = document.getElementById("mocklinkbar");
+		msg.style.display = "";
+		msg.innerText = v;
+	};
+  var mocklink = [];
   U.prototype.rightclick = function(a) {
     var map = a.I.map;
-    b.push( new google.maps.LatLng(this.d.Hb, this.d.Ib) );
-    if (b.length == 2) {
-      new google.maps.Polyline({map:map, path:b, strokeColor:"#cc0000", strokeOpacity:0.8, strokeWeight:2});
-      var distance = Math.round( google.maps.geometry.spherical.computeDistanceBetween(b[0], b[1]) );
-      distance /= 1000;
-      alert("Distance = " + distance + "km");
-      b = [];
+
+    mocklink.push( new google.maps.LatLng(this.d.Hb, this.d.Ib) );
+		if (mocklink.length == 1) {
+		  showMsg("Linking from " + this.d.title);
+		} else {
+      if (!mocklink[0].equals(mocklink[1])) {
+				new google.maps.Polyline(
+					{map:map, path:mocklink, strokeColor:"#ff3333", strokeOpacity:0.8, strokeWeight:2}
+				);
+
+				var distance = Math.round( google.maps.geometry.spherical.computeDistanceBetween(mocklink[0], mocklink[1]) );
+				distance /= 1000;
+        showMsg("Distance = " + distance + "km");
+      }
+      mocklink = [];
     };
     
     false;
@@ -179,6 +192,7 @@ function ZZ() {
     a != m ? (c.append('<div class="mod_installer">'), Ad({g:a.Ta}, c), c.append('</div><div class="mod_icon"><div class="SPRITE_', P(a.b.Wc), '"></div></div><div class="mod_name">', N(a.name), "<br/>[", N(a.Nd), "]</div>")) : c.append('<div class="mod_icon_empty"></div>');
     c.append("</div>")
   };
+
 }
 
 function injectScript(main) {
@@ -191,3 +205,16 @@ function injectScript(main) {
 }
 
 injectScript(ZZ);
+
+{
+  var elem = document.createElement("div");
+  elem.id = "mocklinkbar";
+	elem.style.display = "none";
+
+  var butter = document.getElementById("butterbar");
+  butter.parentNode.appendChild(elem);
+
+  elem.onclick = function() {
+		this.style.display = "none";
+  }
+};
