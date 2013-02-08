@@ -6,11 +6,6 @@
    } ],
    "description": "Ingress: Panda Resistance (HK Version) ",
    "homepage_url": "http://www.ingress.com/intel/",
-   "icons": {
-      "128": "icon-128.png",
-      "16": "icon-16.png",
-      "48": "icon-48.png"
-   },
    "web_accessible_resources": [
 	"enl_lev1.png",
 	"enl_lev2.png",
