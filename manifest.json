@@ -2,10 +2,10 @@
    "content_scripts": [ {
       "js": [ "bookmarklet.js" ],
       "css": [ "css.css" ],
-      "matches": [ "http://www.ingress.com/intel*" ]
+      "matches": [ "https://www.ingress.com/intel*" ]
    } ],
    "description": "Ingress: Panda Resistance (HK Version) ",
-   "homepage_url": "http://www.ingress.com/intel/",
+   "homepage_url": "https://www.ingress.com/intel/",
    "web_accessible_resources": [
 	"enl_lev1.png",
 	"enl_lev2.png",
